@@ -95,7 +95,7 @@ public class Lgdpdb01 {
         // throw new RuntimeException("LGCA");
 
         // }
-         log.warn("Dfhcommarea:"+dfhcommarea);
+        log.warn("Dfhcommarea:" + dfhcommarea);
         if (dfhcommarea.getCaRequestId() != "01DEND" && dfhcommarea.getCaRequestId() != "01DHOU"
                 && dfhcommarea.getCaRequestId() != "01DCOM" && dfhcommarea.getCaRequestId() != "01DMOT") {
             dfhcommarea.setCaReturnCode(99);
@@ -122,7 +122,7 @@ public class Lgdpdb01 {
     }
 
     public void deletePolicyDb2Info() {
-        log.debug("MethoddeletePolicyDb2Infostarted..");
+        log.debug("Method deletePolicyDb2Infostarted..");
         emVariable.setEmSqlreq(" DELETE POLICY");
         try {
             deletePolicyJpa.deletePolicyByDb2CustomernumIntAndDb2PolicynumInt(db2CustomernumInt, db2PolicynumInt);

@@ -13,7 +13,7 @@ import com.bluescript.demo.entity.PolicyEntity;
 public interface IDeletePolicyJpa extends JpaRepository<PolicyEntity, String> {
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query(value = "DELETE as yValueDelete FROM POLICY WHERE ( CUSTOMERNUMBER = :db2CustomernumInt AND POLICYNUMBER = :db2PolicynumInt )", nativeQuery = true)
+    @Query(value = "DELETE FROM POLICY WHERE ( CUSTOMERNUMBER = :db2CustomernumInt AND POLICYNUMBER = :db2PolicynumInt )", nativeQuery = true)
 
     void deletePolicyByDb2CustomernumIntAndDb2PolicynumInt(@Param("db2CustomernumInt") int db2CustomernumInt,
             @Param("db2PolicynumInt") int db2PolicynumInt);
