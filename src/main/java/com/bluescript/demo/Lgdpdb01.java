@@ -96,8 +96,11 @@ public class Lgdpdb01 {
 
         // }
         log.warn("Dfhcommarea:" + dfhcommarea);
-        if (dfhcommarea.getCaRequestId() != "01DEND" && dfhcommarea.getCaRequestId() != "01DHOU"
-                && dfhcommarea.getCaRequestId() != "01DCOM" && dfhcommarea.getCaRequestId() != "01DMOT") {
+        log.warn("dfhcommarea.getCaRequestId():" + dfhcommarea.getCaRequestId().trim());
+        dfhcommarea.setCaRequestId(dfhcommarea.getCaRequestId().trim());
+        if (dfhcommarea.getCaRequestId() != "01DEND" & dfhcommarea.getCaRequestId() != "01DHOU"
+                & dfhcommarea.getCaRequestId() != "01DCOM" & dfhcommarea.getCaRequestId() != "01DMOT") {
+            log.warn("inside if ");
             dfhcommarea.setCaReturnCode(99);
         } else {
             deletePolicyDb2Info();
@@ -114,26 +117,25 @@ public class Lgdpdb01 {
 
         /* return */
 
-        log.debug("Method mainline completed..");
+        log.warn("Method mainline completed..");
 
         return new ResponseEntity<>(dfhcommarea, HttpStatus.OK);
 
     }
 
     public void deletePolicyDb2Info() {
-        log.debug("Method deletePolicyDb2Infostarted..");
+        log.warn("Method deletePolicyDb2Infostarted..");
         emVariable.setEmSqlreq(" DELETE POLICY");
         try {
             deletePolicyJpa.deletePolicyByDb2CustomernumIntAndDb2PolicynumInt(db2CustomernumInt, db2PolicynumInt);
 
-            writeErrorMessage();
-            /* return */
-
         } catch (Exception e) {
             log.error(e);
+            writeErrorMessage();
+            /* return */
         }
 
-        log.debug("Method deletePolicyDb2Info completed..");
+        log.warn("Method deletePolicyDb2Info completed..");
     }
 
     public void writeErrorMessage() {
